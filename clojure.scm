@@ -38,4 +38,8 @@
                       (copy-file "clj"
                                  (string-append %output "/bin/clj"))
                       (copy-file "clojure-tools-1.10.1.536.jar"
-                                 (string-append %output "/libexec/clojure-tools-1.10.1.536.jar")))))))))
+                                 (string-append %output "/libexec/clojure-tools-1.10.1.536.jar")))))))
+    (synopsis "Clojure")
+    (description "Clojure deps and cli")
+    (home-page "https://www.clojure.org/deps_and_cli")
+    (license epl1.0)))
