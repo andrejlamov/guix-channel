@@ -12,13 +12,15 @@
     (version "1.10.1.536")
     (source (origin
               (method url-fetch)
-              (uri "https://download.clojure.org/install/clojure-tools-1.10.1.536.tar.gz")
+              (uri
+               (string-append
+                "https://download.clojure.org/install/clojure-tools-" version ".tar.gz"))
               (sha256
                (base32
                 "06bibxymmkmdcdhprni4nrlmbfapjsas35c0v7fpa0kmxg6v1idp"))))
     (build-system gnu-build-system)
     (propagated-inputs
-     `(("openjdk:jdk" ,openjdk11 "jdk")
+     `(("openjdk" ,openjdk11)
        ("rlwrap" ,rlwrap)))
     (arguments
      `(#:tests? #f
@@ -37,8 +39,8 @@
                                  (string-append %output "/bin/clojure"))
                       (copy-file "clj"
                                  (string-append %output "/bin/clj"))
-                      (copy-file "clojure-tools-1.10.1.536.jar"
-                                 (string-append %output "/libexec/clojure-tools-1.10.1.536.jar")))))))
+                      (copy-file (string-append "clojure-tools-" ,version ".jar")
+                                 (string-append %output "/libexec/clojure-tools-" ,version ".jar")))))))
     (synopsis "Clojure")
     (description "Clojure deps and cli")
     (home-page "https://www.clojure.org/deps_and_cli")
